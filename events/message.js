@@ -3,7 +3,7 @@ const {
     Discord
 } = require('../bot')
 
-module.exports = (bot, message) => {
+module.exports = (bot, message) => { 
     Discord.Structures.extend('GuildMember', GuildMember => {
         class CustomPermissions extends GuildMember {
             constructor(bot, data, ) {
