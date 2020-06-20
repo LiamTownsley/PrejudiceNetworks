@@ -38,3 +38,5 @@ fs.readdir(`./events/`, (err, files) => {
 });
 
 bot.login()
+
+module.exports = { Discord }
