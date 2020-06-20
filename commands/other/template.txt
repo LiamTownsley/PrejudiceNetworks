@@ -1,0 +1,10 @@
+module.exports = {
+	name: 'commandName',
+    description: 'Description of the command',
+    aliases: ["templ", "ate"],
+    guildOnly: true,
+    args: true,
+	execute(message, args) {
+       // ...
+	},
+};
