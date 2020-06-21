@@ -22,7 +22,7 @@ const bot = new Discord.Client();
 fs.readdirSync('./commands/').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}/`).filter(files => files.endsWith(".js"));
     for (const file of commands) {
-        bot.log(`${success} Loading Command \x1b[36m${file}\x1b[0m in module \x1b[36m${dirs}\x1b[0m`)
+        bot.log(`${success} Loading Command: \x1b[36m${dirs}/${file}\x1b[0m`)
         const command = require(`./commands/${dirs}/${file}`);
         bot.commands.set(command.name, command);
     }
