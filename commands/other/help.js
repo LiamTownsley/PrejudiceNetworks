@@ -1,4 +1,4 @@
-const prefix = process.env.PREFIX
+const prefix = process.env.PREFIX;
 
 module.exports = {
     name: 'help',
@@ -7,22 +7,22 @@ module.exports = {
     usage: '[command name]',
     cooldown: 5,
     execute(message, args, bot) {
-        let data = [];
+        const data = [];
         const {
-            commands
+            commands,
         } = message.client;
 
         if (!args.length) {
-            data.push('Here\'s a list of all my commands:\n\`\`\`');
+            data.push('Here\'s a list of all my commands:\n```');
             data.push(commands.map(command => command.name).join(', '));
             data.push(`\`\`\`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
 
             return message.channel.send({
-                    embed: {
-                        title: `<:list:722476302615052379> Command Help (${commands.size} commands)`,
-                        description: data.join("")
-                    }
-                })
+                embed: {
+                    title: `<:list:722476302615052379> Command Help (${commands.size} commands)`,
+                    description: data.join(''),
+                },
+            })
                 .catch(error => {
                     console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
                     message.reply('It seems like I can\'t DM you! Do you have DMs disabled?');
@@ -41,8 +41,8 @@ module.exports = {
         if (command.aliases) data.push(`\n**Aliases:** ${command.aliases.join(', ')}`);
         if (command.description) data.push(`\n**Description:** ${command.description}`);
         if (command.permission) {
-            for (key in bot.permissionGroups) {
-                if (bot.permissionGroups[key] == command.permission) data.push(`\n**Permission:** <@&${key}>`)
+            for (const key in bot.permissionGroups) {
+                if (bot.permissionGroups[key] == command.permission) data.push(`\n**Permission:** <@&${key}>`);
             }
         }
         if (command.usage) data.push(`\n**Usage:** ${prefix}${command.name} ${command.usage}`);
@@ -51,9 +51,9 @@ module.exports = {
 
         message.channel.send({
             embed: {
-                title: "<:list:722476302615052379> Command Help",
-                description: data.join("")
-            }
+                title: '<:list:722476302615052379> Command Help',
+                description: data.join(''),
+            },
         });
     },
 };

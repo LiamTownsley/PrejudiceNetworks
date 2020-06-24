@@ -4,8 +4,8 @@ module.exports = {
     cooldown: 5,
     guildOnly: true,
     essential: true,
-    execute(message, args, bot) {
-        message.member.roles.add("722489965229113444");
+    execute(message) {
+        message.member.roles.add('722489965229113444');
         message.delete();
-    }
+    },
 };
