@@ -17,6 +17,7 @@ bot.permissionGroups = {
 };
 bot.log = log;
 bot.raid = false;
+bot.recentJoins = 0;
 
 fs.readdirSync('./commands/').forEach(dirs => {
     const commands = fs.readdirSync(`./commands/${dirs}/`).filter(files => files.endsWith('.js'));
