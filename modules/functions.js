@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync } = require('fs');
 
 module.exports = {
-    async askQuestion(question, message, channel, callback) {
+    async askQuestion(question, message, channel, cleanup, callback) {
         const finalAnswer = channel.send({
             embed: {
                 title: '<:list:722476302615052379> Question',
@@ -17,10 +17,12 @@ module.exports = {
                 })
                     .then(collected => {
                         const collectedAnswer = collected.first().content;
-                        if(collectedAnswer.toLowerCase() == 'exit') return false;
+                        // if(collectedAnswer.toLowerCase() == 'exit') return false;
+                        if (cleanup) {
+                            collected.first().delete();
+                            msg.delete();
+                        }
                         if (callback) callback(collectedAnswer);
-                        collected.first().delete();
-                        msg.delete();
                         return collectedAnswer;
                     })
                     .catch(() => {

@@ -84,12 +84,12 @@ module.exports = (bot, message) => {
     if (command.guildOnly && message.channel.type !== 'text') {
         return message.reply('I can\'t execute that command inside DMs!');
     }
-    if (command.devOnly && message.author.id != '471749017907494912') {
+    if (command.devOnly && message.author.id != '720257380100735008') {
         return message.reply(`You have insufficient permission to run \`${command.name}\`.`);
     }
 
     if (message.channel.type == 'dm') {
-        if (message.author.id != '471749017907494912') {
+        if (message.author.id != '720257380100735008') {
             return message.reply('You have insufficient permission to run commands here.');
         }
     }

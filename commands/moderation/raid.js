@@ -6,6 +6,7 @@ module.exports = {
     guildOnly: true,
     execute(message, args, bot) {
         bot.raid = !bot.raid;
+        bot.recentJoins = 0;
         message.channel.send(`Raid mode was **${(bot.raid ? 'enabled' : 'disabled')}**.`);
     },
 };

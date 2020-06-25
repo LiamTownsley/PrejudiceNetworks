@@ -12,16 +12,18 @@ module.exports = (bot, member) => {
                 });
             });
         setTimeout(() => {
-            bot.raid = false;
-            bot.channels.fetch('725335023212953681')
-                .then(chan => {
-                    chan.send({
-                        embed: {
-                            title: '<:list:722476302615052379> Raid Mode',
-                            description: 'Raid mode has been disabled automatically',
-                        },
+            if(bot.raid == true) {
+                bot.raid = false;
+                bot.channels.fetch('725335023212953681')
+                    .then(chan => {
+                        chan.send({
+                            embed: {
+                                title: '<:list:722476302615052379> Raid Mode',
+                                description: 'Raid mode has been disabled automatically',
+                            },
+                        });
                     });
-                });
+            }
         }, 60000 * 10);
     }
     setTimeout(() => {
