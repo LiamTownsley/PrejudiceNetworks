@@ -40,6 +40,7 @@ module.exports = {
                         'What is your in-game name?',
                         'Why are you applying for staff?',
                         'Why should we pick you for staff over others?',
+                        'What is your playtime?',
                     ];
 
                     let toSend = '';
@@ -86,40 +87,5 @@ module.exports = {
                     }
                 })();
             });
-        /* const answers = [];
-        const questions = [
-            'What is your in-game name?',
-            'Why are you applying for staff?',
-            'Why should we pick you for staff over others?',
-        ];
-
-        let toSend = '';
-        for (const question of questions) {
-            const answer = await askQuestion(question, message, message.channel);
-            if (!answer) {
-                message.channel.send('**Timeout!** You did not answer the question(s) in the allocated time.');
-                break;
-            }
-
-            if (answer == 'exit') break;
-            answers.push(answer);
-        }
-
-        for (const [i, value] of answers.entries()) {
-            toSend = `${toSend}\n**${questions[i]}**\n\`\`\`${value}\`\`\``;
-        }
-
-        if(toSend.length > 1024) {
-            return console.log('Error!');
-        }
-
-        bot.channels.fetch('725493435318009899').then(chan => {
-            chan.send({
-                embed: {
-                    title: `${message.author.tag} (${message.author.id}) - Staff Application`,
-                    description: toSend,
-                },
-            });
-        }); */
     },
 };

@@ -1,3 +1,11 @@
+const { msToString } = require('../modules/functions');
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: '\n > ',
+});
+
 module.exports = (bot) => {
     bot.user.setActivity('Predjudice Networks', {
         type: 'WATCHING',
@@ -7,6 +15,7 @@ module.exports = (bot) => {
     bot.log('Status: \x1b[36mWatching Prejudice Networks\x1b[0m');
     bot.log(`Total Guild Members: \x1b[36m${bot.users.cache.array().length}\x1b[0m`);
     bot.log(`Raid Status: \x1b[36m${bot.raid}\x1b[0m`);
+    bot.log(`Loading took: ${msToString(new Date() - bot.loadingStarted)}`);
     const guild = bot.guilds.cache.get('721112680848556034');
     function updateMembers() {
         const memberCount = guild.members.cache.filter(member => !member.user.bot).size;
@@ -23,6 +32,23 @@ module.exports = (bot) => {
                 banCountChannel.setName(`Guild Bans: ${banCount || '...'}`);
             });
     }
+
+    function askEval() {
+        rl.question('\x1b[36m>\x1b[0m ', function(input) {
+            try {
+                if(input == 'exit') return process.exit();
+                let evaled = eval(input);
+
+                if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
+                askEval();
+            }
+            catch (err) {
+                console.log('ERROR:\n' + err);
+                askEval();
+            }
+        });
+    }
+    askEval();
 
     updateMembers();
     updateBans();
