@@ -58,6 +58,6 @@ process.on('SIGINT', function() {
     process.exit();
 });*/
 
-bot.login('NzMwODI2NjQ1OTY3MjA4NjEw.XwdJbA.8Hg8fWJCj2vIaE5Q29plFHaojaE');
+bot.login();
 
 module.exports = { Discord };
