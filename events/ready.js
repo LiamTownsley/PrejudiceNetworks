@@ -7,6 +7,10 @@ const rl = readline.createInterface({
 });
 
 module.exports = (bot) => {
+    if(process.argv[2] == '--test') {
+        bot.destroy();  
+    } 
+    
     bot.user.setActivity('Predjudice Networks', {
         type: 'WATCHING',
     });
