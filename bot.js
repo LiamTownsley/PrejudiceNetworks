@@ -58,6 +58,6 @@ process.on('SIGINT', function() {
     process.exit();
 });*/
 
-bot.login();
+bot.login(process.argv.token);
 
 module.exports = { Discord };
