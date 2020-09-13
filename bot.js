@@ -58,6 +58,10 @@ process.on('SIGINT', function() {
     process.exit();
 });*/
 
-bot.login(process.argv.token);
+if(process.argv[2] == '--test') {
+    return console.log('Not logging in - testing environment.')
+} else {
+    bot.login();
+}
 
 module.exports = { Discord };
